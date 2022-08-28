@@ -2,6 +2,8 @@ package com.example.gitspringapp.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -15,6 +17,12 @@ public class TodoController {
 
     @GetMapping
     public ResponseEntity getTodo(){
+        return ResponseEntity.status(200).body(todos);
+    }
+
+    @PostMapping
+    public ResponseEntity addTodo(@RequestBody  String todo){
+        todos.add(todo);
         return ResponseEntity.status(200).body(todos);
     }
 }
